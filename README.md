@@ -5,4 +5,6 @@ Used Model View ViewModel Architecture with Repository Pattern to show trending 
 
 Used Android Navigation Architecture to Navigate between fragments
 
-Used WebView to show Datas
+Used DataBinding to show Data in RecyclerView
+
+Used WebView to show Details for each row of the RecyclerView
