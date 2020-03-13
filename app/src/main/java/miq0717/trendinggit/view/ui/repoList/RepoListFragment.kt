@@ -27,7 +27,7 @@ class RepoListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewDataBinding = FragmentRepoListBinding.inflate(inflater, container, false).apply {
-            viewModel = ViewModelProviders.of(this@RepoListFragment).get(RepoListViewModel::class.java)
+            viewmodel = ViewModelProviders.of(this@RepoListFragment).get(RepoListViewModel::class.java)
             setLifecycleOwner(viewLifecycleOwner)
         }
         // Inflate the layout for this fragment
@@ -36,27 +36,27 @@ class RepoListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewDataBinding.viewModel?.fetchRepoList()
+        viewDataBinding.viewmodel?.fetchRepoList()
 
         setAdapter()
         setObservers()
     }
 
     private fun setObservers() {
-        viewDataBinding.viewModel?.repoListLive?.observe(viewLifecycleOwner, Observer {
+        viewDataBinding.viewmodel?.repoListLive?.observe(viewLifecycleOwner, Observer {
             adapter.updateRepoList(it)
         })
 
-        viewDataBinding.viewModel?.toastMessage?.observe(viewLifecycleOwner, Observer {
+        viewDataBinding.viewmodel?.toastMessage?.observe(viewLifecycleOwner, Observer {
             activity?.longToast(it)
         })
     }
 
     private fun setAdapter() {
-        val viewModel = viewDataBinding.viewModel
+        val viewModel = viewDataBinding.viewmodel
 
         if (viewModel != null) {
-            adapter = RepoListAdapter(viewDataBinding.viewModel!!)
+            adapter = RepoListAdapter(viewDataBinding.viewmodel!!)
 
             val layoutManager = LinearLayoutManager(activity)
             repo_list_rv.layoutManager = layoutManager
