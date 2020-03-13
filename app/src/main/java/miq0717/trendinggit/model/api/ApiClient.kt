@@ -21,6 +21,7 @@ object ApiClient {
 
         baseUrl(BASE_URL)
         addConverterFactory(GsonConverterFactory.create(gson))
+        client(createRequestInterceptorClient())
         build()
     }.create(ApiService::class.java)
 
